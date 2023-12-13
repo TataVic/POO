@@ -6,3 +6,35 @@ Três tipos de operadores: unário, binário e ternário;
 unários -> incremento;
 binário -> operação matemática (soma);
 ternário -> condicional e não possa ser sobrecarrregado
+
+sintaxe do op. binário: 
+tipo_retorno operator tipo_operador(tipo_parâmetro1) {
+// implementação da sobrecarga do operador
+}
+--utilizando se no parâmetros constantes para evitar modificações e referência pelo desempenho;
+
+sintaxe do op. unário: 
+void/tipo_retorno operator tipo_operador() {
+// implementação da sobrecarga do operador
+}
+
+-- utilizando a implementação através da incrementação pós e pré, e o ponteiro this
+This = usado para refererir ao próprio objeto dentro dos métodos de uma classe
+*This = é a desferênciação do ponteiro, em que representa o próprio objeto ao qual o ponteiro this aponta. 
+ 
+// pré−incremento (ex: ++x) - incrementamos e retornamos o objeto que terá o valor usado como parte de alguma expressão.
+
+Ponto2D operator++() {
+X += 1;
+Y += 1;
+return ∗this;
+}
+// pós−incremento (ex: x++) - precisamos usar um objeto temporário para guardar o valor que será retornado antes de incrementar os valores do objeto (que será usado
+como parte de alguma expressão).
+
+Ponto2D operator++(int) {
+Ponto2D temp = ∗this;
+X += 1;
+Y += 1;
+return temp;
+}
