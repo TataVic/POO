@@ -1,0 +1,17 @@
+Exercício: Criação de Empresa.
+Implemente uma classe Empresa que gerencia recursos por meio de unique_ptr
+e shared_ptr.
+A classe Edificio é um recurso exclusivo para cada empresa. O construtor e
+destrutor são responsáveis por exibir mensagens indicando a construção e
+destruição do edifício.
+A classe Funcionario representa um recurso compartilhado entre várias
+empresas. Caso um funcionário não esteja em nenhuma empresa, uma
+mensagem avisando que ele está desempregado deve ser exibida.
+A classe Empresa possui um unique_ptr para o Edificio e um shared_ptr para o
+Funcionario. Ou seja, cada empresa tem seu próprio edifício, mas os
+funcionários podem ser compartilhados entre várias empresas.
+O construtor exibe uma mensagem indicando a criação da empresa, e o
+destrutor exibe uma mensagem indicando o encerramento da empresa.
+O método info() mostra informações sobre a empresa, incluindo o edifício e o
+funcionário associados.
+Crie métodos para contratar e demitir funcionários. Sugestão: use reset().

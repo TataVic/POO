@@ -119,5 +119,8 @@ cout << "Estamos fora do escopo do bloco." << endl;
 return 0;
 }
 
+** Método .reset() = alterar o estado do ponteiro inteligente,
+reatribuindo ou liberando o recurso que ele está gerenciando, previamente, utilizamos o método para alocar e associar um novo objeto a um
+ponteiro inteligente que estava indefinido.
 
 
