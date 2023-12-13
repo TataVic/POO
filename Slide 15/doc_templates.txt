@@ -1,0 +1,48 @@
+Templates Variáticos> em que a quantidade de parâmetros sejam variados, como definido por números arbit´raios de argumento;
+- Classes ou funções variádicas;
+- Adicionando flexibilidade;
+
+Esta é uma função variádica para calcular a média. O número de argumentos é
+variável.
+#include <iostream>
+using namespace std;
+template <typename... Tipos>
+double calcularMedia(Tipos... par) {
+return (double) (par + ...) / sizeof...(par);
+}
+int main() {
+double media = calcularMedia(17, 21, 32, 74, 12);
+cout << "Média: " << media << endl; // 31.2
+return 0;
+}
+
+template <typename... Tipos>
+double calcularMedia(Tipos... par) {
+Declaração da função template que pode receber um número variável de
+argumentos.
+Tipos são os tipos dos argumentos. Como estamos lidando com funções e
+números, eles seráo deduzidos a partir dos argumentos passados.
+par é a lista de parâmetros da função, possuindo tamanho variável, que
+receberão os argumentos.
+
+O retorno da função calculando a média.
+return (double) (par + ...) / sizeof...(par);
+Temos um número variável de argumentos para trabalhar.
+Portanto, usaremos fold expressions para trabalhar com esses argumentos.
+As fold expressions permitem aplicar um operador em um conjunto de
+argumentos.
+
+
+FOLD EXPRESSIONS - quatro formas
+Unary Right Fold, (E OP . . .)
+Unary Left Fold, (. . . OP E)
+Binary Right Fold, (E OP . . . OP I)
+Binary Left Fold (I OP . . . OP E)
+
+** OP = operador matemático;
+** E (expessão, espaço) = lista que contém variáveis ou expressões que ainda não foram totalmente expandidas. É um espaço reservado para valores que serão preenchidos posteriormente.
+** I (expressão || declaração) = não envolve valores de espaço reservado ou partes incompletas. Por exemplo, uma constante ou variável definida por você, que fará parte da expressão geral.
+
+AVISO: no unary em rigth coloque parenteses;
+
+
