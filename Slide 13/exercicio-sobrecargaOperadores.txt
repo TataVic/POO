@@ -1,0 +1,45 @@
+#include <iostream>
+using namespace std;
+class Ponto2D {
+private:
+double X,Y;
+public:
+Ponto2D() {}
+Ponto2D(double x, double y) : X(x), Y(y) {}
+Ponto2D operator + (const Ponto2D& outro) {
+return Ponto2D(X + outro.X, Y + outro.Y);
+}
+void ExibirCoordenadas() {
+cout << "Coordenadas: (" << X << ", " << Y << ")" << endl;
+}
+};
+int main() {
+Ponto2D pontoA(7.0, 3.0);
+Ponto2D pontoB(1.0, 5.0);
+Ponto2D somaAeB = pontoA + pontoB;
+somaAeB.ExibirCoordenadas();
+return 0;
+}
+
+** Faça a sobrecarga dos seguintes operadores na classe Ponto2D.
+Operador de Subtração (-). Para calcular a diferença entre dois pontos 2D.
+Operador de Igualdade (==). Para comparar se dois pontos 2D são iguais.
+Operador de Desigualdade (!=). Para comparar se dois pontos 2D são
+diferentes.
+Operador de Atribuição (=). Para permitir a atribuição de um ponto 2D a
+outro.
+
+** Implemente uma classe minhaData, que conterá dia, mês e ano. Implemente a
+sobrecarga dos operadores ’+’, ’-’, ’=’, ’!=’, ’++’, e ’–’ para essa classe.
+A fim de simplificação, assumiremos que o mês tem 30 dias. O incremento e
+decremento deve mudar o mês, caso esteja no dia 30, ou no dia 1,
+respectivamente. A adição e subtração também deve considerar esta questão.
+Da mesma forma, se estivermos no dia 1 do mês 1 e ocorrer uma subtração,
+precisará mudar o ano. O mesmo raciocínio é aplicado para uma adição no dia
+30 do mês 12.
+Implemente a sobrecarga dos operadores ’<’, ’>’, ’<=’, e ’>=’ para comparar
+objetos do tipo minhaData.
+
+
+** Quando sobrecarregando operadores que efetuam comparações, lembrem que
+eles devem retornar verdadeiro ou falso.
