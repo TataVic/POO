@@ -38,3 +38,30 @@ X += 1;
 Y += 1;
 return temp;
 }
+
+Operadores Conversão
+sintaxe: operator tipo_conversao();
+
+ao ter um objeto como atibuto para ser modelado, exemplo:
+#include <iostream>
+using namespace std;
+class minhaData {
+private:
+int ano, mes, dia;
+public:
+minhaData() {}
+minhaData(int ano, int mes, int dia) {
+this−>ano = ano;
+this−>mes = mes;
+this−>dia = dia;
+}
+operator int() {
+return ((ano ∗ 10000) + (mes ∗ 100) + dia);
+}
+};
+int main() {
+minhaData objdata(2023,11,30);
+int dataInt = objdata; // O cast não é necessário, já estamos retornando um int.
+cout << dataInt << endl; // 20231130
+return 0;
+}
