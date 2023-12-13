@@ -1,0 +1,8 @@
+Operadores: são próximos a estrutura de uma função, e possuem retorno e parâmetros, sendo unários ||binários ou ternários;
+Inutitiva: seja a segunda opção e Conveniente: a primeira como função,
+	string3 = string1.Concatenate(string2);
+	string3 = string1 + string2;
+Três tipos de operadores: unário, binário e ternário;
+unários -> incremento;
+binário -> operação matemática (soma);
+ternário -> condicional e não possa ser sobrecarrregado
