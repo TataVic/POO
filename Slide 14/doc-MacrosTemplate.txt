@@ -1,0 +1,2 @@
+Unidade Pré processador - antes do código ser comopilado elé e pré-processado pelo compilador;
+No c++ contém elementos sintátitocs pelo qual possa controlar diversos comportamentos da aplicação quando utilizado instruções pelo pré-processamento;
