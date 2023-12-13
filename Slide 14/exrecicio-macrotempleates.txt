@@ -81,12 +81,64 @@ int main() {
 
 3 - Implemente uma classe de fila genérica usando templates. Teste a classe com
 diferentes tipos de dados.
-Implemente uma classe de lista duplamente encadeada usando templates. Inclua
+
+#include <iostream>
+#include <queue>
+using namespace std;
+template <typename T>
+class MinhaFila {
+private:
+    queue<T> files;
+
+public:
+    // Adiciona um elemento à fila
+    void enfileirar(const T& elemento) {
+        files.push(elemento);
+    }
+
+    // Remove e retorna o elemento da frente da fila
+    T desenfileirar() {
+        T elemento = files.front();
+        files.pop();
+        return elemento;
+    }
+
+    // Verifica se a fila está vazia
+    bool vazia() const {
+        return files.empty();
+    }
+};
+
+int main() {
+    // Testando a classe de fila genérica com diferentes tipos de dados
+    MinhaFila<int> filaDeInteiros;
+    filaDeInteiros.enfileirar(10);
+    filaDeInteiros.enfileirar(20);
+
+    cout << "Elemento desenfileirado: " << filaDeInteiros.desenfileirar() <<endl;
+
+    MinhaFila<double> filaDeDoubles;
+    filaDeDoubles.enfileirar(3.14);
+    filaDeDoubles.enfileirar(2.71);
+
+    cout << "Elemento desenfileirado: " << filaDeDoubles.desenfileirar() << endl;
+
+    MinhaFila<string> filaDeStrings;
+    filaDeStrings.enfileirar("Olá");
+    filaDeStrings.enfileirar("Mundo");
+
+    cout << "Elemento desenfileirado: " << filaDeStrings.desenfileirar() << endl;
+
+    return 0;
+}
+
+
+4 - Implemente uma classe de lista duplamente encadeada usando templates. Inclua
 operações comuns para essa estrutura de dados. Teste a classe com diferentes
 tipos de dados.
 
 
-4 - Implemente uma classe de template que realiza a conversão entre dois tipos de
+5 - Implemente uma classe de template que realiza a conversão entre dois tipos de
 dados distintos. A classe deve ter um método que aceita um valor do tipo
 original e o converte para o tipo alvo. A versão genérica do método deve apenas
 exibir “Conversão não implementada”, já que cada conversão deve ser
