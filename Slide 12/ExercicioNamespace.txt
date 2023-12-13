@@ -23,11 +23,19 @@ void aindaOutraFuncao() {
 }
 
 ** Explique em detalhe o que a instrução a seguir faz. O que é exibido?
-namespaceComUmNomeSuficientementeLongo::umaFuncao();
+namespaceComUmNomeSuficientementeLongo::umaFuncao(); 
+
+RESPOSTA: A instrução a seguir possui acesso do namespace (namespaceComUmNomeSuficientementeLongo) que estaria totalmente qualificada com o identificador global e seu operado de resolução de  escopo que foi declarado para a função umaFuncao() na qual possui a exibição da mensagem "Essa função faz alguma coisa".
+
 ** Explique em detalhe o que as instruções a seguir fazem. O que é exibido?
 namespace sl = namespaceComUmNomeSuficientementeLongo;
 sl::umaFuncao();
+
+RESPOSTA: A instrução a seguir cria um aliases (apelido) para o namespace na qual se utiliza para reduzir os nome longos de namespaces, e que a partir disso seja identificado a função que exibe  a mensagem "Essa função faz alguma coisa".
+ 
 ** Explique em detalhe o que as instruções a seguir fazem. O que é exibido?
 namespace sl = namespaceComUmNomeSuficientementeLongo;
 using sl::umaFuncao;
 umaFuncao();
+
+RESPOSTA: A instrução a seguir traz a ideia de dar um aliases para o nome do namespace só que com o tipo de utilização com a diretiva using em que se utiliza apenas uma vez e após isso a utilização do (::) operador de resolução de escopo. 

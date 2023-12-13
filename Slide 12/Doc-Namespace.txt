@@ -14,9 +14,26 @@
  		    obj.funcao();
 ** Tipos de Namespace:
 - Namespaces Globais:
-
+Se não forem declarados explicitamente, utiliza-se o operador de resolução de escopo (::) e sem o nome antes dos identificadores (::var), mas senão os namespaces pode ser globais implicitamente (names::var). 
 - Namespaces Aninhados:
+names1::names2::var;
+Aninhamento possui acesso não qualificado ao membro de seus pais (função filho pode acessar a função pai) - CORRETO
+Vs
+Aninhamento dos membros-pai não possui qaulificação para os namespaces aninhados (função pai acessar a função filho) - ERRADO
+*Solução: inverter as funções e aninhar os namespaces juntos;
 
 - Namespaces Embutidos:
+São realizados as operações como membros de namespaces pai e garante que o pai possua acesso aos membros dos namespaces sem qualificações;
+E são declarados com o INLINE (inline namespace nomenamesp{})
+
+namespace primeiroNamespace {
+	inline namespace segundoNamespace {
+	int umaVariavel;
+		void outraFuncao() {...}
+	}
+		void umaFuncao() {
+			return outraFuncao();
+		}
+}
 
 - Namespaces Anônimos: 
