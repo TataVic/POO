@@ -77,3 +77,47 @@ return 0;
 }
 
 
+- weak_ptr = resolver potenciais problemas de ciclos
+de referência.
+std::weak_ptr <MinhaClasse> ponteiroCompartilhado(new MinhaClasse()); e <memory>.
+* Não aumenta a contagem de referência.
+* Podemos, portanto, verificar e utilizar o objeto sem influenciar nessa
+contagem.
+
+* evitar vazamentos de memória
+causados por referências circulares quando você tem dois ou mais objetos
+referenciando uns aos outros através de ‘std::shared_ptr‘.
+
+#include <iostream>
+#include <memory>
+using namespace std;
+class Pessoa;
+class Emprego {
+public:
+// Agora usaremos weak_ptr em vez de shared_ptr
+weak_ptr<Pessoa>pessoa;
+Emprego() {}
+~Emprego() { cout << "Destrutor de Emprego sendo chamado." <<
+endl; }
+};
+class Pessoa {
+public:
+shared_ptr<Emprego>emprego;
+Pessoa() {}
+~Pessoa() { cout << "Destrutor de Pessoa sendo chamado." << endl;
+}
+};
+int main() {
+{
+shared_ptr<Pessoa> pessoa(new Pessoa);
+shared_ptr<Emprego> emprego(new Emprego);
+pessoa−>emprego = emprego;
+emprego−>pessoa = pessoa;
+cout << "Estamos dentro do escopo do bloco." << endl;
+}
+cout << "Estamos fora do escopo do bloco." << endl;
+return 0;
+}
+
+
+
