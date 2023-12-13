@@ -1,3 +1,5 @@
+MACROS
+
 Unidade Pré processador - antes do código ser comopilado elé e pré-processado pelo compilador;
 No c++ contém elementos sintátitos pelo qual possa controlar diversos comportamentos da aplicação quando utilizado instruções pelo pré-processamento;
 - instruções: # que modificam o texto do código fonte antes da compilação;
@@ -54,3 +56,96 @@ ClasseExemplo m;
 m.set_minhaVariavel(12);
 cout << m.get_minhaVariavel();
 }
+
+--------------------------------------------------------------------------------
+
+TEMPLATES
+
+São ferramentas que permite criar códigos genéricos para serem trabalhados com diversos tipos de dados, sendo eles um modelo base para classes ou funções;
+
+Sintaxe de Templates para Funções:
+template <typename Tipo>
+	Tipo minhaFuncao(Tipo parametro) {
+		// Código da função
+	}
+
+Sintaxe de Templates para Classes:
+template <typename Tipo>
+	class MinhaClasse {
+		// Código da Classe
+	};
+Para instanciar um objeto da classe usando o Template:
+MinhaClasse <TIPO> obj;
+
+Mútiplos parâmetros.
+template <typename R, typename S, typename T, typename U>
+	class MinhaClasse {
+		// Código da Classe
+	};
+Para instanciar um objeto da classe:
+MinhaClasse <TIPO_R,TIPO_S,TIPO_T,TIPO_U> obj;
+
+CODIGO: 
+#include <iostream>
+using namespace std;
+template <typename TipoElemento, int tamanhoPilha>
+class Pilha {
+private:
+TipoElemento elementos[tamanhoPilha];
+int topo;
+public:
+Pilha() : topo(−1) {}
+bool push(TipoElemento valor) {
+if(topo < tamanhoPilha − 1) {
+elementos[++topo] = valor;
+return true; }
+else {
+cerr << "Erro: Stack Overflow, não é possível adicionar mais elementos.\n";
+return false; }
+}
+TipoElemento pop() {
+if (topo >= 0)
+return elementos[topo−−];
+else {
+cerr << "Erro: Stack Underflow, não é possível remover elementos.\n";
+return 0; }
+}
+};
+int main() {
+Pilha<int, 200> stack;
+stack.push(50);
+cout << stack.pop();
+return 0;
+}
+
+
+
+Templates pode possuir valores padrões:
+Templates podem possuir valores padrão para os parâmetros.
+#include <iostream>
+using namespace std;
+template <typename Tipo = int, int ValorPadrao = 26>
+class MinhaClasse {
+private:
+Tipo var;
+public:
+MinhaClasse(Tipo valor = ValorPadrao):var(valor) {}
+void imprimirVar() {
+cout << "Var: " << var << endl;
+}
+};
+int main() {
+MinhaClasse<int,36> obj1;
+MinhaClasse<> obj2;
+obj1.imprimirVar(); // 36
+obj2.imprimirVar(); // 26
+return 0;
+}
+Aqui temos um valor padrão para o tipo do primeiro parâmetro e para o
+valor do segundo parâmetro.
+
+
+
+Templates de especialização: Podem ser instaciados (anteriormente) e especializados (vamos ver adiante)
+
+** Instaciacação de templates: 
