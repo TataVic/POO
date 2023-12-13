@@ -37,3 +37,11 @@ namespace primeiroNamespace {
 }
 
 - Namespaces Anônimos: 
+São namespaces sem nomes, a fim de agrupar declarações em um espaço para se evitar conflitos, ou seja, se preserva a localidade do código e no seu int main possui acesso;
+
+- Renomeando Namespaces: 
+Evita-se colisões de nomes curtos e dificuldades para nomes longos;
+Criase se apelidos (aliases), como: 
+namespaces aliases = nomeeeee;
+aliases::var;
+*Criar nomes alternativos - Legibilidade e Flexibilidade* 
