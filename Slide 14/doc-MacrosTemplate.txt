@@ -1,2 +1,56 @@
 Unidade Pré processador - antes do código ser comopilado elé e pré-processado pelo compilador;
-No c++ contém elementos sintátitocs pelo qual possa controlar diversos comportamentos da aplicação quando utilizado instruções pelo pré-processamento;
+No c++ contém elementos sintátitos pelo qual possa controlar diversos comportamentos da aplicação quando utilizado instruções pelo pré-processamento;
+- instruções: # que modificam o texto do código fonte antes da compilação;
+
+MACROS: legibilidade e facilidade na manutenção;
+ - diretiva #define : declarar um valor constante para o código
+#define GRANDE 1024
+int vetor[GRANDE];
+
+Resultad: int vetor[1024];
+
+e/ou
+
+#define QUADRADO(x) ((x)*(x)) 
+
+CUIDADO= 
+#define QUADRADO(x) (x*x)
+var = QUADRADO(3+4);
+Isso se torna (3+4*3+4), o que resultará em 19, em vez de 49.
+* Os parênteses ajudam a evitar problemas potenciais relativos a precedência de
+operadores.
+
+Macros podem ter mais de um parâmetro.
+#define MAX(x,y) ((x) > (y) ? (x) : (y))
+#define MIN(x,y) ((x) < (y) ? (x) : (y))
+
+Usamos o operador ternário condicional para descobrir o maior, e o menor, entre
+dois números.
+Temos dois parâmetros, x e y sendo utilizados na função macro.
+#define MAX(x,y) ((x) > (y) ? (x) : (y))
+var = MAX(73/4*1.13,18.9);
+O código acima irá substituir todas as ocorrências de MAX(73/4*1.13,18.9) por
+20.34.
+Mas tenham cuidado com espaços em branco. O pré-processador não é tão
+tolerante com espaços vazios.
+
+
+
+Macros podem ser usadas para gerar código repetitivo ou para criar construções
+específicas.
+#include <iostream>
+using namespace std;
+#define DECLARACAO_GETTER_SETTER(type, var) \
+type get_##var() const { return var; } \
+void set_##var(type valor) { var = valor; }
+class ClasseExemplo {
+private:
+int minhaVariavel;
+public:
+DECLARACAO_GETTER_SETTER(int, minhaVariavel)
+};
+int main() {
+ClasseExemplo m;
+m.set_minhaVariavel(12);
+cout << m.get_minhaVariavel();
+}
