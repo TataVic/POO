@@ -1,0 +1,79 @@
+Ponteiros Inteligentes
+
+Vazamento de memória é um problema comum em programação, ocorrendo
+quando a memória alocada dinamicamente não é liberada após não ser mais
+necessária.
+
+Crash de programa:
+
+** o gerenciamento manual de memória pode ser propenso a erros.
+
+Definição PI: template de classe com operadores sobrecarregados que se comporta como um ponteiro convencional.
+
+"Ou seja, os ponteiros inteligentes se comportam como ponteiros
+convencionais, mas fornecem recursos úteis para garantir que os dados
+alocados dinamicamente sejam liberados corretamente."
+
+ * (operador de desreferenciamento)
+-> (operador de seleção de membro)
+
+sintaxe geral é:
+TipoDePonteiroInteligente <TipoDeDados> NomePonteiro(new TipoDeDados());
+
+Três tipos de PI:
+- unique_ptr = ponteiro exclusivo e não permite cópia, a não ser mover para outro ponteiro (função move()) e libera a memória assim que o ponteiro sai do escopo e sem delete;
+
+#include <memory>
+...
+std::unique_ptr <MinhaClasse> ponteiroUnico(new MinhaClasse());
+
+#include <iostream>
+#include <string>
+#include <memory>
+class ClasseExemplo {
+private:
+std::string nome;
+public:
+ClasseExemplo(std::string nome):nome(nome) {};
+~ClasseExemplo() {}
+void exibeMsg() {
+std::cout << "Essa é a " << nome << std::endl;
+}
+};
+int main() {
+// Criando um std::unique_ptr que gerencia um objeto ClasseExemplo
+std::unique_ptr <ClasseExemplo> ponteiroUnico(new ClasseExemplo("classe1"));
+// Movendo o conteúdo para NovoPonteiroUnico
+std::unique_ptr <ClasseExemplo> NovoPonteiroUnico = std::move(ponteiroUnico);
+NovoPonteiroUnico−>exibeMsg(); // "Essa é a classe1"
+// Aloca um novo objeto para este ponteiro, para não termos um ponteiro "dangling"
+ponteiroUnico.reset(new ClasseExemplo("classe2"));
+ponteiroUnico−>exibeMsg(); // "Essa é a classe2"
+return 0;
+
+
+
+- shared_ptr = ponteiro com contagem de referência e utilizado quando vários donos compartilham a mesma memória, e possui contagem interna de referência e o objeto seja destruído quando o último da referência seja liberado;
+"permite que vários ponteiros tenham acesso a mesma posição de memória."
+
+
+- Método .USE_COUNT() = retorna o número de instâncias distintas de shared_ptr
+que compartilham a propriedade do objeto detido pelo ponteiro que chamou o
+método (incluindo o próprio).
+
+#include <iostream>
+#include <memory>
+using namespace std;
+int main() {
+shared_ptr <int> ponteiro1(new int(99));
+cout << "use_count: " << ponteiro1.use_count() << endl; // 1
+// Criando mais dois shared_ptr que compartilham a propriedade
+do mesmo objeto
+shared_ptr <int> ponteiro2 = ponteiro1;
+shared_ptr <int> ponteiro3 = ponteiro1;
+// Imprimindo o valor atualizado de use_count
+cout << "use_count: " << ponteiro1.use_count() << endl; // 3
+return 0;
+}
+
+
