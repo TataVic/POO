@@ -1,0 +1,115 @@
+1 -Implemente uma função de template que recebe dois parâmetros por referência
+e troca seus valores. Teste a função com inteiros, doubles e chars.
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+template <typename T = int>
+    void Troca(T *num1, T *num2){
+       T aux = *num1;
+       *num1 = *num2; /* desreferenciando, por estar pegando os valores que estariam apontando */
+       *num2 = aux;
+}
+int main (){
+    int numero1 = 2;
+    int numero2 = 3;
+
+    cout <<"numero 1: "<< numero1 <<"\n numero 2: " << numero2 << endl;
+
+    Troca(&numero1, &numero2);
+    
+    cout <<"numero 1: "<< numero1 <<"\n numero 2: " << numero2 << endl;
+    
+    return 0;
+}
+
+
+
+
+2 - Implemente uma função de template que aceita um vetor e seu tamanho como
+argumentos e retorna o maior elemento do vetor. Teste a função com diferentes
+tipos de dados.
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+template <typename T>
+T findMax(const T* array, size_t size) {
+    if (size == 0) {
+        // Se o vetor estiver vazio, lançar uma exceção ou lidar de acordo com a lógica desejada.
+        // Neste caso, estou lançando uma exceção para simplicidade.
+        throw invalid_argument("O vetor está vazio");
+    }
+
+    T maxElement = array[0];
+
+    for (size_t i = 1; i < size; ++i) {
+        if (array[i] > maxElement) {
+            maxElement = array[i];
+        }
+    }
+
+    return maxElement;
+}
+
+int main() {
+    // Testando a função com diferentes tipos de dados
+    int intArray[] = {1, 5, 3, 7, 2};
+    double doubleArray[] = {2.5, 1.3, 5.7, 3.1};
+    char charArray[] = {'a', 'z', 'c', 'f'};
+
+    try {
+        int maxInt = findMax(intArray, 5);
+        cout << "Maior elemento do vetor de inteiros: " << maxInt <<endl;
+
+        double maxDouble = findMax(doubleArray, 4);
+        cout << "Maior elemento do vetor de doubles: " << maxDouble <<endl;
+
+        char maxChar = findMax(charArray, 4);
+        cout << "Maior elemento do vetor de caracteres: " << maxChar <<endl;
+    } catch (const invalid_argument& e) { /* macro substituição da exceção simples*/
+        cerr << "Erro: " << e.what() << endl;
+    }
+
+    return 0;
+}
+
+
+3 - Implemente uma classe de fila genérica usando templates. Teste a classe com
+diferentes tipos de dados.
+Implemente uma classe de lista duplamente encadeada usando templates. Inclua
+operações comuns para essa estrutura de dados. Teste a classe com diferentes
+tipos de dados.
+
+
+4 - Implemente uma classe de template que realiza a conversão entre dois tipos de
+dados distintos. A classe deve ter um método que aceita um valor do tipo
+original e o converte para o tipo alvo. A versão genérica do método deve apenas
+exibir “Conversão não implementada”, já que cada conversão deve ser
+implementada separadamente. Forneça uma especialização para a conversão de
+string para int e teste no main().
+
+
+
+Templates – Exercícios (28)
+
+Exercício: Matriz Genérica
+Crie uma classe de template que represente uma matriz de elementos.
+O tipo dos elementos e o número de linhas e colunas da matriz devem ser
+parâmetros do template.
+A classe deve ter os seguintes recursos:
+Um método que realiza a adição de duas matrizes do mesmo tamanho.
+Um método que multiplica a matriz por um escalar.
+Um método que realiza a multiplicação de duas matrizes.
+Um método que imprime a matriz.
+Um método que preenche a matriz.
+No main(), crie instâncias da classe Matriz com diferentes tipos de dados e
+tamanhos. Realize operações de adição, multiplicação por escalar e
+multiplicação de matrizes para testar a funcionalidade da classe.
+As matrizes devem ser alocadas dinamicamente usando ponteiros para ponteiros.
+Preencha as matrizes com números aleatórios ou efetuando alguma operação
+dados os índices dos elementos.
