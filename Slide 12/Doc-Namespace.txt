@@ -1,0 +1,22 @@
+**Definição = são regiões declarativas para serem fornecidos a um escopo para os tipos de indentificadores (variavavéis, funções, classes);
+**Utilidade = evitar conflitos por nomes, legibilidade e organização do código;
+** 3 Formas de utilizar:
+	1. Qualificação pelo identificador (::)
+		Ex: NomeNamespace::NomeClasse obj;
+		    obj.funcao();
+	2. utilizando a diretiva using + qualificação (::)
+		Ex: using NomeNamespace::NomeClasse;
+		    NomeClasse obj;
+ 		    obj.funcao();
+	2. utilizando a diretiva using para todos os namespaces
+		Ex: using namespace NomeNamespace
+		    NomeClasse obj;
+ 		    obj.funcao();
+** Tipos de Namespace:
+- Namespaces Globais:
+
+- Namespaces Aninhados:
+
+- Namespaces Embutidos:
+
+- Namespaces Anônimos: 
