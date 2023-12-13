@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+namespace namespaceComUmNomeSuficientementeLongo {
+	void umaFuncao() {
+		cout << "Essa função faz alguma coisa" << endl;
+	}
+   namespace umNome {
+	void umaFuncao() {
+		cout << "Essa função faz alguma outra coisa" << endl;
+	}
+   }
+}
+namespace {
+	void outraFuncao() {
+		cout << "Essa é a outra função" << endl;
+	}
+	void aindaOutraFuncao() {
+		cout << "Essa mais uma função" << endl;
+	}
+}
+void aindaOutraFuncao() {
+	cout << "Isso está ficando complicado..." << endl;
+}
+
+** Explique em detalhe o que a instrução a seguir faz. O que é exibido?
+namespaceComUmNomeSuficientementeLongo::umaFuncao();
+** Explique em detalhe o que as instruções a seguir fazem. O que é exibido?
+namespace sl = namespaceComUmNomeSuficientementeLongo;
+sl::umaFuncao();
+** Explique em detalhe o que as instruções a seguir fazem. O que é exibido?
+namespace sl = namespaceComUmNomeSuficientementeLongo;
+using sl::umaFuncao;
+umaFuncao();
