@@ -145,7 +145,22 @@ Aqui temos um valor padrão para o tipo do primeiro parâmetro e para o
 valor do segundo parâmetro.
 
 
-
 Templates de especialização: Podem ser instaciados (anteriormente) e especializados (vamos ver adiante)
 
-** Instaciacação de templates: 
+** Instaciação de templates: A instanciação de templates ocorre quando você cria uma instância específica de uma classe ou função template para um tipo de dados específico.
+template <typename T>
+	class MinhaClasse {
+		// Código da classe
+	};
+MinhaClasse <int> objInt; // Instanciando para o tipo int
+
+** Especialização de templates: A especialização de templates ocorre quando você fornece uma implementação específica para um caso particular do template.
+template <typename T>
+	class MinhaClasse {
+		// Código genérico da classe
+	};
+template <>
+	class MinhaClasse<int> {
+		// Código específico para int
+	};
+
