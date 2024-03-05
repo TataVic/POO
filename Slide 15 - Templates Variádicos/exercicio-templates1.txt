@@ -1,0 +1,67 @@
+Implemente uma classe ou função template variádica que concatene várias
+strings passadas como argumentos.
+
+
+#include <iostream>
+#include <sstream>
+
+// Função template variádica para concatenar strings
+template <typename... Args>
+std::string concatStrings(Args&&... args) {
+    std::ostringstream oss;
+    // Inicializador de lista para garantir que todas as strings sejam processadas
+    (oss << ... << std::forward<Args>(args));
+    return oss.str();
+}
+
+int main() {
+    // Testando a função com diferentes strings
+    std::string resultado1 = concatStrings("Hello", ", ", "world", "!");
+    std::cout << "Concatenação 1: " << resultado1 << std::endl;
+
+    std::string resultado2 = concatStrings("C++", " is ", "powerful", " and", " flexible.");
+    std::cout << "Concatenação 2: " << resultado2 << std::endl;
+
+    return 0;
+}
+
+
+/* #include <iostream>
+#include <sstream>
+
+// Função template variádica para concatenar strings
+template <typename... Args>
+std::string concatStrings(const Args&... args) {
+    std::ostringstream oss;
+    // Inicializador de lista para garantir que todas as strings sejam processadas
+    (oss << ... << args);
+    return oss.str();
+}
+
+int main() {
+    // Testando a função com diferentes strings
+    std::string resultado1 = concatStrings("Hello", ", ", "world", "!");
+    std::cout << "Concatenação 1: " << resultado1 << std::endl;
+
+    std::string resultado2 = concatStrings("C++", " is ", "powerful", " and", " flexible.");
+    std::cout << "Concatenação 2: " << resultado2 << std::endl;
+
+    return 0;
+}
+ */
+
+
+
+
+Implemente uma função template variádica que retorne o número de
+argumentos passados.
+Modifique a classe de soma de argumentos para aceitar um valor inicial e
+retornar a soma dos argumentos mais o valor inicial.
+Explique a diferença entre os quatro tipos apresentados de expansão de fold
+expressions.
+Implemente uma classe template variádica que possui métodos para retornar o
+menor e o maior valor entre os argumentos. Implemente métodos distintos.
+Implemente uma classe ou funções template variádicas que calcule a média,
+mediana, e desvio padrão dos argumentos.
+Implemente uma classe ou função template variádica que calcule a soma dos
+quadrados dos elementos.
